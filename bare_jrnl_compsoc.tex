@@ -661,6 +661,24 @@ They compare there classification for C4.5 Decision Tree, Ripper and Naive Bayes
 
 \section{Previous Works}
 
+Most of the cases of imbalanced dataset is dealt in two ways, viz. under-sampling the majority class samples or over-sampling the minority class samples.\\
+Different domain requires different techniques for the same based on their requirement. \\
+When it comes to under-sampling the majority class, Kubat et al (1997, 1998) experimented with the same.\\
+In Kubat and Matwin (1997), the majority class is selectively under sampled while the minority class sampling remains fixed. \\
+The performance metric used for the classifier is geometric mean which is not as expressive as a ROC curve and corresponds to just one point on it.\\
+Related to the above, the SHRINK system of Kubat et al (1998) classified the overlapping reasons of both majority and minority classes as positive, leading to a "best positive region" classification.\\
+ 
+Another study on under-sampling of dataset was performed by Japkowicz (2000). \\
+In her study, she explored different sampling techniques on artificial 1D data for better evaluation of concept complexity.\\
+Her exploration involved under-sampling as well as resampling of data.\\
+Both strategies involved two different methods, viz. random and focused. \\
+Random resampling used samples from minor class to be sampled randomly until they matched major class samples, while focused resampling used only the boundary points between minor and major class.\\
+In random under-sampling, the samples from majority class were removed randomly to match the minority class samples, in contrast to focused under-sampling which under sampled majority class samples lying further away.\\
+Her study revealed the efficacy of both the sampling techniques but did not provide any clear advantage in the domain considered.\\
+
+
+
+
 
 \section{Evaluation Criteria and Performance Metrics}
 
