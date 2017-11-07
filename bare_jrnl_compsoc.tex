@@ -725,7 +725,16 @@ Similarly, the count of incorrectly classified positive sample is termed as Fals
 For any classification task, predictive accuracy is defined as the total number of correctly classified samples over total number of samples. \\
 Mathematically, it is given by, $$ Accuracy = \frac{TP + TN}{TN + FP + FN + TP}$$
 In machine learning, we evaluate the performance of a classifier by its error rate which is given by, $$Error Rate = 1 - Accuracy$$
-This performance measure works well for balanced class data sets, but for imbalanced datasets a much wider used metric is the Receiver Operating Curve (ROC). 
+This performance measure works well for balanced class data sets, but for imbalanced datasets a much wider used metric is the Receiver Operating Characteristics (ROC) curves. 
+
+A typically ROC curve is a plot of percentage True Positive vs percentage False Positive. \\
+One such curve is shown in Figure \textbf{XX}.\\
+We have \%ge FP on the X-axis given by, $$\%ge~FP = \frac{FP}{TN + FP}$$
+and \%ge TP on the Y-axis given by, $$\%ge~TP = \frac{TP}{TP + FN}$$
+As evident from the definition, the ideal point on the curve will be (0,100), signifying the all positive examples are classified correctly while no negative samples are classified wrongly as positive.\\
+The Area Under the Curve (AUC) can be taken as a good metric for comparing different classifiers, but these can be suboptimal for some specific cost and class distributions.\\
+Thus, the convex hull of ROC curve, being potentially optimal, is also taken as one of the performance metrics.
+
 
 
 
