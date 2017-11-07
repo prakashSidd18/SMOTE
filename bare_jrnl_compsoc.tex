@@ -704,6 +704,28 @@ In 1997, Provost and Fawcett introduced the ROC convex hull method for performan
 
 
 \section{Evaluation Criteria and Performance Metrics}
+Confusion matrix, as shown in Table \ref{tab:confmat}, is one of the most common method in machine learning used to evaluate performance of a (2-class) classification problem.\\
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c||c|c|}
+    	\hline
+         & Predicted Negative & Predicted Positive  \\ \hline \hline  
+        Actual Negative & True Negative (TN) & False Positive (FP) \\ \hline
+        Actual Positive & False Negative (FN) & True Positive (TP) \\ \hline 
+    \end{tabular}
+    \caption{Confusion Matrix}
+    \label{tab:confmat}
+\end{table}
+
+As shown in the table, the columns are predicted class and the rows are actual class. \\
+Over a dataset of finite samples, the count of correctly classified negative samples is termed as True Negative (TN), while the count of incorrectly classified negative samples is termed as False Positive (FP).\\
+Similarly, the count of incorrectly classified positive sample is termed as False Negative (FN), while the count of correctly classified positive sample is termed as True Positive (TP).
+
+For any classification task, predictive accuracy is defined as the total number of correctly classified samples over total number of samples. \\
+Mathematically, it is given by, $$ Accuracy = \frac{TP + TN}{TN + FP + FN + TP}$$
+In machine learning, we evaluate the performance of a classifier by its error rate which is given by, $$Error Rate = 1 - Accuracy$$
+This performance measure works well for balanced class data sets, but for imbalanced datasets a much wider used metric is the Receiver Operating Curve (ROC). 
 
 
 
