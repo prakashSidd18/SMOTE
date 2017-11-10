@@ -3,7 +3,6 @@
 from sys import *
 from os.path import *
 
-import time
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import NearestNeighbors
 import numpy as np
@@ -40,12 +39,20 @@ def plot(clf, X, Y, id):
       idx = np.where(Y == i)
       plt.scatter(X[idx, 0], X[idx, 1], c=color, cmap=plt.cm.RdYlBu, edgecolor='black', s=15)
 
-    plt.suptitle("Decision surface of a decision tree using paired features")
+    if id is 'a':
+        method = 'Original Data'
+    elif id is 'b':
+        method = 'Over-Sampling with Replacement'
+    elif id is 'c':
+        method = 'SMOTE'
+
+    plt.suptitle("Decision surface of a decision tree using paired features-"+method)
     plt.legend(loc='lower right', borderpad=0, handletextpad=0)
     plt.axis("tight")
     # plt.show
     name = id+'.png'
     plt.savefig(name)
+    plt.close()
 
 
 def overReplacement(data, percent):
