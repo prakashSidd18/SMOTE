@@ -47,6 +47,8 @@ def plot(clf, X, Y, id):
         method = 'Over-Sampling with Replacement'
     elif id is 'c':
         method = 'SMOTE'
+    elif id is 'd':
+        method = 'Under-sampling + SMOTE'
 
     plt.suptitle("Decision surface of a decision tree using paired features-"+method)
     # plt.legend(loc='lower right', borderpad=0, handletextpad=0)
@@ -64,52 +66,52 @@ def overReplacement(data, percent):
 
     unique, counts = np.unique(data[:, [data.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
-    nNeg = freq[1.0]
-    nPos = freq[0.0]
+    nPositive = freq[1.0]
+    nNegative = freq[0.0]
 
     nindex = 0
-    # print 'Neg: ', nNeg, ' Pos: ', nPos
-    negData = np.zeros((nNeg, data.shape[1]))
+    # print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
+    posData = np.zeros((nPositive, data.shape[1]))
     for i in range(data.shape[0]):
         if data[i, [data.shape[1]-1]] == 1.0:
             # print i
-            negData[nindex, :] = data[i, :]
+            posData[nindex, :] = data[i, :]
             nindex+=1
 
-    # print negData.shape
+    # print posData.shape
 
 
     nnindex = 0
     sz = data.shape[0]
-    while nnindex < (N-1) * negData.shape[0]:
-        i = np.random.randint(negData.shape[0])
+    while nnindex < (N-1) * posData.shape[0]:
+        i = np.random.randint(posData.shape[0])
 
         temp = np.empty((sz+1, data.shape[1]), data.dtype)
         temp[:sz, :] = data
-        temp[data.shape[0], :] = negData[i, :]
+        temp[data.shape[0], :] = posData[i, :]
         nnindex+=1
         sz+=1
         data = temp
 
     return data
 
-def populate(negData, N, i, nnarray):
+def populate(posData, N, i, nnarray):
 
-    # print negData.shape
-    synthetic = np.empty((N, negData.shape[1]), negData.dtype)
+    # print posData.shape
+    synthetic = np.empty((N, posData.shape[1]), posData.dtype)
     newindex = 0
     while N != 0:
         idx = np.random.randint(nnarray.shape[1])
-        for attr in range(negData.shape[1]):
+        for attr in range(posData.shape[1]):
             # print attr
             if attr < data.shape[1]-1:
-                dif = negData[nnarray[i, idx], attr] - negData[i, attr]
+                dif = posData[nnarray[i, idx], attr] - posData[i, attr]
                 # print 'dif:', dif
                 gap = np.random.random(1)
                 # print 'gap:', gap
-                synthetic[newindex, attr] = negData[i, attr] + gap * dif
+                synthetic[newindex, attr] = posData[i, attr] + gap * dif
             else:
-                synthetic[newindex, attr] = negData[i, attr]
+                synthetic[newindex, attr] = posData[i, attr]
         newindex+=1
         N-=1
 
@@ -119,34 +121,35 @@ def smote(data, percent, k):
     print 'SMOTE'
     unique, counts = np.unique(data[:, [data.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
-    nNeg = freq[1.0]
-    nPos = freq[0.0]
+    nPositive = freq[1.0]
+    nNegative = freq[0.0]
 
     if percent < 100:
-        nNeg = (percent / 100 )* nNeg
+        nPositive = (percent / 100 )* nPositive
         N = 100
 
     N = (int)(percent/100)
 
+
+    # print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
+    posData = np.zeros((nPositive, data.shape[1]))
     nindex = 0
-    # print 'Neg: ', nNeg, ' Pos: ', nPos
-    negData = np.zeros((nNeg, data.shape[1]))
     for i in range(data.shape[0]):
         if data[i, [data.shape[1]-1]] == 1.0:
             # print i
-            negData[nindex, :] = data[i, :]
+            posData[nindex, :] = data[i, :]
             nindex += 1
 
-    # print negData.shape
+    # print posData.shape
 
     sz = data.shape[0]
-    nnarray = np.empty((nNeg, k), int)
-    for i in range(nNeg):
-        nbrs = NearestNeighbors(n_neighbors=k+1, algorithm='ball_tree').fit(negData[:, [1, 0]])
-        distances, indices = nbrs.kneighbors(negData[:, [1, 0]])
+    nnarray = np.empty((nPositive, k), int)
+    for i in range(nPositive):
+        nbrs = NearestNeighbors(n_neighbors=k+1, algorithm='ball_tree').fit(posData[:, [1, 0]])
+        distances, indices = nbrs.kneighbors(posData[:, [1, 0]])
         nnarray[i, :] = indices[i, 1:]
 
-        newRow = populate(negData, N-1, i, nnarray)
+        newRow = populate(posData, N-1, i, nnarray)
 
         temp = np.empty((sz + N-1, data.shape[1]), data.dtype)
         temp[:sz, :] = data
@@ -158,6 +161,46 @@ def smote(data, percent, k):
 
     return data
 
+def underSMOTE(data, percent):
+    print 'Under-sampling + SMOTE'
+    unique, counts = np.unique(data[:, [data.shape[1] - 1]], return_counts=True)
+    freq = dict(zip(unique, counts))
+    nPositive = freq[1.0]
+    nNegative = freq[0.0]
+
+    if percent < 100:
+        nPositive = (percent / 100) * nPositive
+        N = 100
+
+    N = (int)(percent / 100)
+    
+    targetNegative = (int) (nPositive / N)
+
+    negData = np.zeros((nNegative, data.shape[1]))
+    nindex = 0
+    for i in range(data.shape[0]):
+        if data[i, [data.shape[1] - 1]] == 0.0:
+            # print i
+            negData[nindex, :] = data[i, :]
+            nindex += 1
+
+    posData = np.zeros((nPositive, data.shape[1]))
+    nindex = 0
+    for i in range(data.shape[0]):
+        if data[i, [data.shape[1] - 1]] == 1.0:
+            # print i
+            posData[nindex, :] = data[i, :]
+            nindex += 1
+
+    np.random.shuffle(negData)
+
+    dat = np.empty((targetNegative+nPositive, data.shape[1]), dtype = data.dtype)
+    dat[:targetNegative+1, :] = negData[:targetNegative+1, :]
+    dat[targetNegative:, :] = posData
+
+    np.random.shuffle(dat)
+
+    return dat
 
 
 if __name__=="__main__":
@@ -195,36 +238,32 @@ if __name__=="__main__":
     plot(clfNormal, X, Y, 'a')
 
     # Over-sampling with replacement
-
     dataA = overReplacement(data, 500)
-    # np.random.shuffle(dataA)
-    # print dataA.shape
+
     X = dataA[:, [1, 0]]
     Y = dataA[:, [data.shape[1]-1]]
 
     unique, counts = np.unique(dataA[:, [dataA.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
-    nNeg = freq[1.0]
-    nPos = freq[0.0]
-    print 'Neg: ', nNeg, ' Pos: ', nPos
+    nPositive = freq[1.0]
+    nNegative = freq[0.0]
+    print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
 
     clfReplace = DecisionTreeClassifier()
     clfReplace = clfReplace.fit(X, Y)
     plot(clfReplace, X, Y, 'b')
 
     # SMOTE
-
     dataB = smote(data, 500, 5)
-    # np.random.shuffle(dataB)
-    # print dataA.shape
+
     X = dataB[:, [1, 0]]
     Y = dataB[:, [data.shape[1]-1]]
 
     unique, counts = np.unique(dataB[:, [data.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
-    nNeg = freq[1.0]
-    nPos = freq[0.0]
-    print 'Neg: ', nNeg, ' Pos: ', nPos
+    nPositive = freq[1.0]
+    nNegative = freq[0.0]
+    print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
 
     clfSmote = DecisionTreeClassifier()
     clfSmote = clfReplace.fit(X, Y)
@@ -232,6 +271,22 @@ if __name__=="__main__":
 
 
     # Under-sampling and SMOTE
+
+    dataC = smote(data, 500, 5)
+    dataC = underSMOTE(dataC, 200)
+
+    X = dataC[:, [1, 0]]
+    Y = dataC[:, [data.shape[1] - 1]]
+
+    unique, counts = np.unique(dataC[:, [data.shape[1] - 1]], return_counts=True)
+    freq = dict(zip(unique, counts))
+    nPositive = freq[1.0]
+    nNegative = freq[0.0]
+    print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
+
+    clfUSmote = DecisionTreeClassifier()
+    clfUSmote = clfReplace.fit(X, Y)
+    plot(clfUSmote, X, Y, 'd')
 
 
 
