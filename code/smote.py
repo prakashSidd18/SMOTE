@@ -5,6 +5,8 @@ from os.path import *
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import NearestNeighbors
+from sklearn.decomposition import PCA
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -22,7 +24,7 @@ def plot(clf, X, Y, id):
     print "plotting"
     plot_step = 0.02
     n_classes = 2
-    plot_colors = 'gr'
+    plot_colors = 'rb'
     labels = {"1: Class 1", "2: Class 2"}
     # print data[:, :6]
 
@@ -37,7 +39,7 @@ def plot(clf, X, Y, id):
 
     for i, color in zip(range(n_classes), plot_colors):
       idx = np.where(Y == i)
-      plt.scatter(X[idx, 0], X[idx, 1], c=color, cmap=plt.cm.RdYlBu, edgecolor='black', s=15)
+      plt.scatter(X[idx, 0], X[idx, 1], c=color, cmap=plt.cm.RdYlBu, edgecolor='black', s=20)
 
     if id is 'a':
         method = 'Original Data'
@@ -47,7 +49,7 @@ def plot(clf, X, Y, id):
         method = 'SMOTE'
 
     plt.suptitle("Decision surface of a decision tree using paired features-"+method)
-    plt.legend(loc='lower right', borderpad=0, handletextpad=0)
+    # plt.legend(loc='lower right', borderpad=0, handletextpad=0)
     plt.axis("tight")
     # plt.show
     name = id+'.png'
@@ -60,16 +62,16 @@ def overReplacement(data, percent):
     N = percent / 100
     # print data.shape
 
-    unique, counts = np.unique(data[:, [6]], return_counts=True)
+    unique, counts = np.unique(data[:, [data.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
     nNeg = freq[1.0]
     nPos = freq[0.0]
 
     nindex = 0
     # print 'Neg: ', nNeg, ' Pos: ', nPos
-    negData = np.zeros((nNeg, 7))
+    negData = np.zeros((nNeg, data.shape[1]))
     for i in range(data.shape[0]):
-        if data[i, [6]] == 1.0:
+        if data[i, [data.shape[1]-1]] == 1.0:
             # print i
             negData[nindex, :] = data[i, :]
             nindex+=1
@@ -100,7 +102,7 @@ def populate(negData, N, i, nnarray):
         idx = np.random.randint(nnarray.shape[1])
         for attr in range(negData.shape[1]):
             # print attr
-            if attr < 6:
+            if attr < data.shape[1]-1:
                 dif = negData[nnarray[i, idx], attr] - negData[i, attr]
                 # print 'dif:', dif
                 gap = np.random.random(1)
@@ -115,22 +117,22 @@ def populate(negData, N, i, nnarray):
 
 def smote(data, percent, k):
     print 'SMOTE'
-    unique, counts = np.unique(data[:, [6]], return_counts=True)
+    unique, counts = np.unique(data[:, [data.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
     nNeg = freq[1.0]
     nPos = freq[0.0]
 
-    if(percent < 100):
-        nNeg = (percent/100)*nNeg
+    if percent < 100:
+        nNeg = (percent / 100 )* nNeg
         N = 100
 
     N = (int)(percent/100)
 
     nindex = 0
     # print 'Neg: ', nNeg, ' Pos: ', nPos
-    negData = np.zeros((nNeg, 7))
+    negData = np.zeros((nNeg, data.shape[1]))
     for i in range(data.shape[0]):
-        if data[i, [6]] == 1.0:
+        if data[i, [data.shape[1]-1]] == 1.0:
             # print i
             negData[nindex, :] = data[i, :]
             nindex += 1
@@ -143,11 +145,15 @@ def smote(data, percent, k):
         nbrs = NearestNeighbors(n_neighbors=k+1, algorithm='ball_tree').fit(negData[:, [1, 0]])
         distances, indices = nbrs.kneighbors(negData[:, [1, 0]])
         nnarray[i, :] = indices[i, 1:]
+
         newRow = populate(negData, N-1, i, nnarray)
-        temp = np.empty((sz + 1, data.shape[1]), data.dtype)
+
+        temp = np.empty((sz + N-1, data.shape[1]), data.dtype)
         temp[:sz, :] = data
-        temp[data.shape[0], :] = newRow
-        sz += 1
+
+        for j in range(N-1):
+            temp[sz, :] = newRow[j, :]
+            sz += 1
         data = temp
 
     return data
@@ -157,6 +163,7 @@ def smote(data, percent, k):
 if __name__=="__main__":
 
     load_data = True
+    pca_true = True
 
     if load_data:
         dataset = abspath('mammo.csv')
@@ -167,23 +174,35 @@ if __name__=="__main__":
         np.savetxt("mammo.csv", data, fmt='%10.5f', delimiter=',')
 
     # print Y
+    # Reduce dimensionality of dataset to 2 using PCA for better classification
+    if pca_true:
+        xData = data[:, :data.shape[1]-1]
+        yData = data[:, [data.shape[1]-1]]
+
+        pca = PCA(n_components=2)
+        xData = pca.fit_transform(xData)
+        # print xData.shape
+
+        data = np.empty((data.shape[0], 3), dtype=xData.dtype)
+        data[: , :2] = xData
+        data[:, [2]] = yData
 
     # Normal Decision tree CLassification
     X = data[:, [1, 0]]
-    Y = data[:, [6]]
+    Y = data[:, [data.shape[1]-1]]
     clfNormal = DecisionTreeClassifier()
     clfNormal = clfNormal.fit(X, Y)
-    # plot(clfNormal, X, Y, 'a')
+    plot(clfNormal, X, Y, 'a')
 
     # Over-sampling with replacement
 
-    dataA = overReplacement(data, 200)
-    np.random.shuffle(dataA)
+    dataA = overReplacement(data, 500)
+    # np.random.shuffle(dataA)
     # print dataA.shape
     X = dataA[:, [1, 0]]
-    Y = dataA[:, [6]]
+    Y = dataA[:, [data.shape[1]-1]]
 
-    unique, counts = np.unique(dataA[:, [6]], return_counts=True)
+    unique, counts = np.unique(dataA[:, [dataA.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
     nNeg = freq[1.0]
     nPos = freq[0.0]
@@ -191,17 +210,17 @@ if __name__=="__main__":
 
     clfReplace = DecisionTreeClassifier()
     clfReplace = clfReplace.fit(X, Y)
-    # plot(clfReplace, X, Y, 'b')
+    plot(clfReplace, X, Y, 'b')
 
     # SMOTE
 
-    dataB = smote(data, 200, 5)
-    np.random.shuffle(dataB)
+    dataB = smote(data, 500, 5)
+    # np.random.shuffle(dataB)
     # print dataA.shape
     X = dataB[:, [1, 0]]
-    Y = dataB[:, [6]]
+    Y = dataB[:, [data.shape[1]-1]]
 
-    unique, counts = np.unique(dataB[:, [6]], return_counts=True)
+    unique, counts = np.unique(dataB[:, [data.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
     nNeg = freq[1.0]
     nPos = freq[0.0]
@@ -209,7 +228,7 @@ if __name__=="__main__":
 
     clfSmote = DecisionTreeClassifier()
     clfSmote = clfReplace.fit(X, Y)
-    # plot(clfSmote, X, Y, 'c')
+    plot(clfSmote, X, Y, 'c')
 
 
     # Under-sampling and SMOTE
