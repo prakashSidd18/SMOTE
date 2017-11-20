@@ -13,10 +13,6 @@ import matplotlib.pyplot as plt
 
 def dataRead(dataset):
     data = np.genfromtxt(dataset, delimiter=',')
-
-    sz = data.shape[0]
-    newsz = int(np.floor(0.1 * sz))
-    data = data[np.random.choice(data.shape[0], newsz, replace=False), :]
     return data
 
 
@@ -104,7 +100,7 @@ def populate(posData, N, i, nnarray):
         idx = np.random.randint(nnarray.shape[1])
         for attr in range(posData.shape[1]):
             # print attr
-            if attr < data.shape[1]-1:
+            if attr < posData.shape[1]-1:
                 dif = posData[nnarray[i, idx], attr] - posData[i, attr]
                 # print 'dif:', dif
                 gap = np.random.random(1)
@@ -169,8 +165,8 @@ def underSMOTE(data, percent):
     nNegative = freq[0.0]
 
     if percent < 100:
-        nPositive = (percent / 100) * nPositive
-        N = 100
+        nPositive = int((percent*1.0 / 100) * nPositive)
+        percent = 100
 
     N = (int)(percent / 100)
     
@@ -191,6 +187,8 @@ def underSMOTE(data, percent):
             # print i
             posData[nindex, :] = data[i, :]
             nindex += 1
+        if nindex == nPositive:
+            break
 
     np.random.shuffle(negData)
 
@@ -214,6 +212,10 @@ if __name__=="__main__":
     else:
         dataset = abspath('mammography.csv')
         data = dataRead(dataset)
+        sz = data.shape[0]
+        newsz = int(np.floor(0.1 * sz))
+        data = data[np.random.choice(data.shape[0], newsz, replace=False), :]
+
         np.savetxt("mammo.csv", data, fmt='%10.5f', delimiter=',')
 
     # print Y
@@ -285,7 +287,7 @@ if __name__=="__main__":
     print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
 
     clfUSmote = DecisionTreeClassifier()
-    clfUSmote = clfReplace.fit(X, Y)
+    clfUSmote = clfUSmote.fit(X, Y)
     plot(clfUSmote, X, Y, 'd')
 
 
