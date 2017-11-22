@@ -121,8 +121,8 @@ def smote(data, percent, k):
     nNegative = freq[0.0]
 
     if percent < 100:
-        nPositive = (percent / 100 )* nPositive
-        N = 100
+        nPositive = int(percent*1.0 / 100 )* nPositive
+        percent = 100
 
     N = (int)(percent/100)
 
@@ -164,11 +164,11 @@ def underSMOTE(data, percent):
     nPositive = freq[1.0]
     nNegative = freq[0.0]
 
-    if percent < 100:
-        nPositive = int((percent*1.0 / 100) * nPositive)
-        percent = 100
+    # if percent < 100:
+    #     nPositive = int((percent*1.0 / 100) * nPositive)
+    #     percent = 100
 
-    N = (int)(percent / 100)
+    N = (percent*1.0 / 100)
     
     targetNegative = (int) (nPositive / N)
 
