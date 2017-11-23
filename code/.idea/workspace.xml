@@ -18,7 +18,7 @@
       <file leaf-file-name="smote.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smote.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-415">
+            <state relative-caret-position="2805">
               <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
               <folding>
                 <element signature="e#22#39#0" expanded="true" />
@@ -33,12 +33,12 @@
       <file leaf-file-name="experiments.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/experiments.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="132" column="62" lean-forward="false" selection-start-line="132" selection-start-column="62" selection-end-line="132" selection-end-column="62" />
+            <state relative-caret-position="688">
+              <caret line="64" column="40" lean-forward="false" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
               <folding>
                 <element signature="e#23#41#0" expanded="true" />
                 <element signature="e#903#973#0" expanded="false" />
-                <element signature="e#4166#4221#0" expanded="false" />
+                <element signature="e#4164#4219#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -328,7 +328,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802126" sideWeight="0.503125" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32802126" sideWeight="0.496875" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802126" sideWeight="0.496875" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -347,11 +347,36 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/smote.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2925">
+          <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#39#0" expanded="true" />
+            <element signature="e#5748#5831#0" expanded="false" />
+            <element signature="e#5850#6132#0" expanded="false" />
+            <element signature="e#6253#6555#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+            <element signature="e#903#973#0" expanded="false" />
+            <element signature="e#4164#4219#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/smote.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3015">
@@ -372,7 +397,7 @@
           <folding>
             <element signature="e#23#41#0" expanded="true" />
             <element signature="e#903#973#0" expanded="false" />
-            <element signature="e#4166#4221#0" expanded="false" />
+            <element signature="e#4164#4219#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -425,7 +450,7 @@
           <folding>
             <element signature="e#23#41#0" expanded="true" />
             <element signature="e#903#973#0" expanded="false" />
-            <element signature="e#4166#4221#0" expanded="false" />
+            <element signature="e#4164#4219#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -450,7 +475,7 @@
           <folding>
             <element signature="e#23#41#0" expanded="true" />
             <element signature="e#903#973#0" expanded="false" />
-            <element signature="e#4166#4221#0" expanded="false" />
+            <element signature="e#4164#4219#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -485,7 +510,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/smote.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-415">
+        <state relative-caret-position="2805">
           <caret line="195" column="0" lean-forward="false" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
           <folding>
             <element signature="e#22#39#0" expanded="true" />
@@ -500,18 +525,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
           <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/experiments.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="132" column="62" lean-forward="false" selection-start-line="132" selection-start-column="62" selection-end-line="132" selection-end-column="62" />
+        <state relative-caret-position="688">
+          <caret line="64" column="40" lean-forward="false" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
           <folding>
             <element signature="e#23#41#0" expanded="true" />
             <element signature="e#903#973#0" expanded="false" />
-            <element signature="e#4166#4221#0" expanded="false" />
+            <element signature="e#4164#4219#0" expanded="false" />
           </folding>
         </state>
       </provider>
