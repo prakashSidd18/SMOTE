@@ -6,7 +6,7 @@ from os.path import *
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import NearestNeighbors
 from sklearn.decomposition import PCA
-
+from sklearn.model_selection import train_test_split
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -29,7 +29,8 @@ def plot(clf, X, Y, id):
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
     xx, yy = np.meshgrid(np.arange(x_min, x_max, plot_step), np.arange(y_min, y_max, plot_step))
 
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+    x_test = np.c_[xx.ravel(), yy.ravel()]
+    Z = clf.predict(x_test)
     Z = Z.reshape(xx.shape)
     cs = plt.contourf(xx, yy, Z, cmap=plt.cm.RdYlBu)
 
@@ -158,7 +159,7 @@ def smote(data, percent, k):
     return data
 
 def underSMOTE(data, percent):
-    print 'Under-sampling + SMOTE'
+    print 'Under-sampling'
     unique, counts = np.unique(data[:, [data.shape[1] - 1]], return_counts=True)
     freq = dict(zip(unique, counts))
     nPositive = freq[1.0]
@@ -171,6 +172,9 @@ def underSMOTE(data, percent):
     N = (percent*1.0 / 100)
     
     targetNegative = (int) (nPositive / N)
+
+    if targetNegative >= nNegative:
+        return data
 
     negData = np.zeros((nNegative, data.shape[1]))
     nindex = 0
@@ -228,22 +232,29 @@ if __name__=="__main__":
         xData = pca.fit_transform(xData)
         # print xData.shape
 
-        data = np.empty((data.shape[0], 3), dtype=xData.dtype)
-        data[: , :2] = xData
-        data[:, [2]] = yData
+        dataPCA = np.empty((data.shape[0], 3), dtype=xData.dtype)
+        dataPCA[:, :2] = xData
+        dataPCA[:, [2]] = yData
 
     # Normal Decision tree CLassification
-    X = data[:, [1, 0]]
-    Y = data[:, [data.shape[1]-1]]
+    X = dataPCA[:, [1, 0]]
+    Y = dataPCA[:, [dataPCA.shape[1]-1]]
+
+    unique, counts = np.unique(dataPCA[:, [dataPCA.shape[1] - 1]], return_counts=True)
+    freq = dict(zip(unique, counts))
+    nPositive = freq[1.0]
+    nNegative = freq[0.0]
+    print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
+
     clfNormal = DecisionTreeClassifier()
     clfNormal = clfNormal.fit(X, Y)
     plot(clfNormal, X, Y, 'a')
 
     # Over-sampling with replacement
-    dataA = overReplacement(data, 500)
+    dataA = overReplacement(dataPCA, 500)
 
     X = dataA[:, [1, 0]]
-    Y = dataA[:, [data.shape[1]-1]]
+    Y = dataA[:, [dataA.shape[1]-1]]
 
     unique, counts = np.unique(dataA[:, [dataA.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
@@ -256,12 +267,12 @@ if __name__=="__main__":
     plot(clfReplace, X, Y, 'b')
 
     # SMOTE
-    dataB = smote(data, 500, 5)
+    dataB = smote(dataPCA, 500, 5)
 
     X = dataB[:, [1, 0]]
-    Y = dataB[:, [data.shape[1]-1]]
+    Y = dataB[:, [dataB.shape[1]-1]]
 
-    unique, counts = np.unique(dataB[:, [data.shape[1]-1]], return_counts=True)
+    unique, counts = np.unique(dataB[:, [dataB.shape[1]-1]], return_counts=True)
     freq = dict(zip(unique, counts))
     nPositive = freq[1.0]
     nNegative = freq[0.0]
@@ -274,13 +285,13 @@ if __name__=="__main__":
 
     # Under-sampling and SMOTE
 
-    dataC = smote(data, 500, 5)
-    dataC = underSMOTE(dataC, 200)
+    dataC = smote(dataPCA, 500, 5)
+    dataC = underSMOTE(dataC, 100)
 
     X = dataC[:, [1, 0]]
-    Y = dataC[:, [data.shape[1] - 1]]
+    Y = dataC[:, [dataC.shape[1] - 1]]
 
-    unique, counts = np.unique(dataC[:, [data.shape[1] - 1]], return_counts=True)
+    unique, counts = np.unique(dataC[:, [dataC.shape[1] - 1]], return_counts=True)
     freq = dict(zip(unique, counts))
     nPositive = freq[1.0]
     nNegative = freq[0.0]
