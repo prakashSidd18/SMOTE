@@ -549,7 +549,7 @@ The authors in \cite{smote} propose a new algorithm to augment the minority samp
 % They compare there classification for C4.5 Decision Tree, Ripper and Naive Bayes classifiers. \\
 
 %Summarize the tasks
-In our project, we learn to deal with the challenges of class imbalanced data-sets and how to overcome them. We replicate the work done in \cite{smote} and understand the problem by going over the previous works cited in this paper. Additionally, we summarize the various techniques researchers came up with regards to dealing with this issue. We overview the performance metrics used in this paper and explain why the authors chose to use these metrics, as well as how are they relevant to this particular problem. We then move on to the implementation of the algorithm SMOTE\cite{smote} proposed in the paper, along with two more approaches which was used to emphasize the novelty of this technique. We replicate the experiments section on 3 of the 9 datasets listed in the paper, using Decision Trees, Nearest Neighbours and Naíve Bayes classifiers to learn classification models. We also use the prediction results from these models to plot ROC curves, and taking AUC and convex hull of the curve as evaluation metric, compare our graphs with the graphs obtained in the paper. 
+In our project, we learn to deal with the challenges of class imbalanced data-sets and how to overcome them. We reproduce the work done in \cite{smote} and understand the problem by going over the previous works cited in this paper. Additionally, we summarize the various techniques researchers came up with regards to dealing with this issue. We overview the performance metrics used in this paper and explain why the authors chose to use these metrics, as well as how are they relevant to this particular problem. We then move on to the implementation of the algorithm SMOTE\cite{smote} proposed in the paper, along with two more approaches which was used to emphasize the novelty of this technique. We replicate the experiments section on 3 of the 9 datasets listed in the paper, using Decision Trees, Nearest Neighbours and Naíve Bayes classifiers to learn classification models. We also use the prediction results from these models to plot ROC curves, and taking AUC and convex hull of the curve as evaluation metric, compare our graphs with the graphs obtained in the paper. 
 
 %\subsection{Subsection Heading Here}
 %Subsection text here.
@@ -745,7 +745,7 @@ The codes and dataset are provided in the supplementary material.
 
 \subsection{Over-sampling with replacement}
 Learning a classifier on the imabalanced class data gives us a biased classification towards the majority class samples (red circles).
-From Figure \ref{fig:a} we observe that the classification decision boundary using the original data is not very accurate. 
+From Figure \ref{fig:a}, we observe that the classification decision boundary using the original data is not very accurate. 
 Many minority class samples (blue circles) are classified under majority class (red region) resulting in decrease in true positive rate. 
 The decision boundary is more general and spread away from minority (positive) class samples too.
 
@@ -757,7 +757,21 @@ As a result, we see the decision boundary for minority class samples (blue regio
 In other words, the data starts overfitting towards the positive class samples as more and more leaf nodes are added to the decision tree leading to very specific decision boundaries in the feature space.
 We see the same happening in Figure \ref{fig:b} with the 6 positive samples in the region around (0, 5).
 
-\begin{figure}[!h]
+\subsection{SMOTE}
+Over-sampling of minority samples provides better accuracy but increases the complexity of classifier learnt manifolds. 
+Moreover, the results does not generalize well as the decision region become very specific to the few minority samples present in the feature space leading to increase in false negatives.
+To overcome these issues a new over-sampling technique is proposed which augments the minority class samples by adding ``synthetic" data.
+The algorithm works in the feature space of minority data samples.
+For a given degree of over-sampling rate, say 200\%, the algorithm finds k-nearest neighbors of a minority sample and generates 2 random points on the line joining any 2 of the k-nearest neighbors found.
+We use nearest neighbors class implementation from scikit-learn library to find the nearest neighbor of each data point in the minority feature space.
+Algorithm \textbf{??} gives the steps to generate ``SMOTED" data.
+
+Figure \ref{fig:c} compares the effect of over-sampled data using SMOTE by 500\%, with original data (Figure \ref{fig:a}) and replaced data (Figure \ref{fig:b}).
+It is clear from the plot that synthetic data obtained using SMOTE helps classifier to generalize well over minority samples by providing better synthetic data to overcome the class imbalance.
+The decision region becomes larger and less specific as is the case with over-sampling by replacement, at the same time reducing mis-classification by creating better decision boundary which is seen in the case of classification using original data.
+
+
+\begin{figure}[!t]
 \centering
 \subfloat[Case I]{
 	\includegraphics[width=1.5in]{code/figures/a}%
@@ -776,17 +790,26 @@ We see the same happening in Figure \ref{fig:b} with the 6 positive samples in t
 \label{fig:compare}
 \end{figure}
 
-\subsection{SMOTE}
-
-
 \subsection{SMOTE with under-sampling}
-
+Over-sampling minority class samples with the help of SMOTE helps in increasing the percentage of minority samples, but still doesn't help overcoming the effect of grossly skewed data perfectly.
+To overcome this bias towards majority class sample, we under-sample the majority samples in addition to SMOTing the dataset.
+The under-sampling is done to a degree with respect to the number of minority class samples.
+We first SMOTE the dataset and obtain the final number of minority class samples and then under-sample the majority class sample to get the desired degree of under-sampling.
+For example, in the above example, we have 18 minority samples and 1,100 majority samples. 
+SMOTing the dataset by 500\% results in an increase in minority samples to 90.
+Now, under-sampling the dataset by a degree of 200\% means drawing out \textit{half the samples of minority class samples, at random, from the total majority class samples}, i.e using 45 samples from the 1,100 majority (negative) class samples along with the 90 minority (positive) class samples to draw the decision region.
 
 \section{Experiments}
+We experiment with our implementation of plain under-sampling and under-sampling with SMOTE under varying degrees of under-sampling and SMOTE combinations.
+   
 
 \subsection{Datasets}
 
 \subsection{Classifiers}
+
+\subsection{ROC Curves}
+
+\subsection{Convex Hull and AUC}
 
 \section{Discussions}
 

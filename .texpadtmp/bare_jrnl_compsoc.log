@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  26 NOV 2017 22:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 00:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -328,36 +328,34 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.53561> not available
  <code/figures/a.png, id=20, 578.16pt x 433.62pt>
 File: code/figures/a.png Graphic file (type png)
  <use code/figures/a.png>
-Package pdftex.def Info: code/figures/a.png used on input line 765.
+Package pdftex.def Info: code/figures/a.png used on input line 779.
 (pdftex.def)             Requested size: 108.405pt x 81.30354pt.
  <code/figures/b.png, id=22, 578.16pt x 433.62pt>
 File: code/figures/b.png Graphic file (type png)
  <use code/figures/b.png>
-Package pdftex.def Info: code/figures/b.png used on input line 770.
+Package pdftex.def Info: code/figures/b.png used on input line 784.
 (pdftex.def)             Requested size: 108.405pt x 81.30354pt.
  <code/figures/c.png, id=23, 578.16pt x 433.62pt>
 File: code/figures/c.png Graphic file (type png)
  <use code/figures/c.png>
-Package pdftex.def Info: code/figures/c.png used on input line 774.
+Package pdftex.def Info: code/figures/c.png used on input line 788.
 (pdftex.def)             Requested size: 108.405pt x 81.30354pt.
+ [3 <./code/figures/a.png> <./code/figures/b.png> <./code/figures/c.png>] [4
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[3 <./code/figures/a.png> <./code/figures/b.png> <./code/figures/c.png>] (/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.aux) ) 
+] (/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.aux) ) 
 Here is how much of TeX's memory you used:
- 4005 strings out of 492995
- 64578 string characters out of 6132704
+ 4006 strings out of 492995
+ 64585 string characters out of 6132704
  134339 words of memory out of 5000000
  7495 multiletter control sequences out of 15000+600000
- 49070 words of font info for 104 fonts, out of 8000000 for 9000
+ 49726 words of font info for 105 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  39i,9n,49p,1113b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on "/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.pdf" (3 pages, 212576 bytes).
+Output written on "/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.pdf" (4 pages, 215895 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 69 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
