@@ -190,7 +190,8 @@
 
 % *** SPECIALIZED LIST PACKAGES ***
 %
-%\usepackage{algorithmic}
+\usepackage{algorithmic}
+\usepackage[]{algorithm2e}
 % algorithmic.sty was written by Peter Williams and Rogerio Brito.
 % This package provides an algorithmic environment fo describing algorithms.
 % You can use the algorithmic environment in-text or within a figure
@@ -764,7 +765,7 @@ To overcome these issues a new over-sampling technique is proposed which augment
 The algorithm works in the feature space of minority data samples.
 For a given degree of over-sampling rate, say 200\%, the algorithm finds k-nearest neighbors of a minority sample and generates 2 random points on the line joining any 2 of the k-nearest neighbors found.
 We use nearest neighbors class implementation from scikit-learn library to find the nearest neighbor of each data point in the minority feature space.
-Algorithm \textbf{??} gives the steps to generate ``SMOTED" data.
+Algorithm \ref{algo:smote} gives the steps to generate ``SMOTED" data.
 
 Figure \ref{fig:c} compares the effect of over-sampled data using SMOTE by 500\%, with original data (Figure \ref{fig:a}) and replaced data (Figure \ref{fig:b}).
 It is clear from the plot that synthetic data obtained using SMOTE helps classifier to generalize well over minority samples by providing better synthetic data to overcome the class imbalance.
@@ -791,6 +792,7 @@ The decision region becomes larger and less specific as is the case with over-sa
 \end{figure}
 
 \subsection{SMOTE with under-sampling}
+\label{subsec:smoteu}
 Over-sampling minority class samples with the help of SMOTE helps in increasing the percentage of minority samples, but still doesn't help overcoming the effect of grossly skewed data perfectly.
 To overcome this bias towards majority class sample, we under-sample the majority samples in addition to SMOTing the dataset.
 The under-sampling is done to a degree with respect to the number of minority class samples.
@@ -799,17 +801,100 @@ For example, in the above example, we have 18 minority samples and 1,100 majorit
 SMOTing the dataset by 500\% results in an increase in minority samples to 90.
 Now, under-sampling the dataset by a degree of 200\% means drawing out \textit{half the samples of minority class samples, at random, from the total majority class samples}, i.e using 45 samples from the 1,100 majority (negative) class samples along with the 90 minority (positive) class samples to draw the decision region.
 
-\section{Experiments}
-We experiment with our implementation of plain under-sampling and under-sampling with SMOTE under varying degrees of under-sampling and SMOTE combinations.
-   
+\begin{algorithm}[!h]
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+ \caption{Over-sampling using SMOTE - Algorithm}
+ \label{algo:smote}
+\end{algorithm}
 
+\section{Experiments}
+We experiment with our implementation of plain under-sampling and under-sampling with SMOTE under varying degrees of under-sampling and SMOTE combinations.   
+Our aim is to tackle the class imbalance problems in datasets, thus, we test the algorithm on 3 different dataset with different class distributions.
+We use Decision Trees, Naive Bayes and k-NN classifiers with varying under-sampling and SMOTE degrees to (i) analyze the effectiveness of SMOTing data, and (ii) compare the classifiers learning the best decision boundaries.
+We plot the ROC curves and use ROC Convex Hull (ROCCH) and Area Under the Curve (AUC) as our metrics to draw our conclusions.
 \subsection{Datasets}
+The 3 dataset we use are Mammography Dataset \cite{mammo}, Pima Indian dataset \cite{pima} and SatImage dataset \cite{satimg}.
+The class distribution of the datasets are provided in Table \ref{tab:dataset}.
+We have provided the codes to convert raw data file into comma separated file format (CSV), which is the input dataset file format in our implementation and experiments code, in the supplementary material. 
+
+\begin{table}[!b]
+    \centering
+    \begin{tabular}{|c||c|c|}
+    	\hline
+         Datasets & \#Minority (+ve) Class & \#Majority (-ve) Class  \\ \hline \hline  
+        Mammography & 260 & 10,923 \\ \hline
+        SatImage & 626 & 5,809 \\ \hline 
+        Pima Indian & 268 & 500 \\ \hline
+    \end{tabular}
+    \caption{Class Distribution in Datasets Used}
+    \label{tab:dataset}
+\end{table}
+Each datasets are multi-dimensional, with mammography dataset consisting 6 attributes, Pima Indian having 8 attributes and SatImage datasets having 36 dimensions.
+Wherever needed, we reduce the dimensionality of dataset using PCA for preserving maximum information, faster computation and visualization of decision boundary in 2-D feature space.
 
 \subsection{Classifiers}
+Our main classifier for testing the algorithm implementation is \textbf{Decision Trees}.
+In the paper, the authors use C4.5 variant of Decision Trees to test the classification quality.
+We have used the implementation of Decision Trees provided by scikit-learn library, which is an optimized version of C4.5 algorithm called Classification and Regression Trees (CART) algorithm.
+As stated in the documentation \cite{dtree}, ``CART is very similar to C4.5, but it differs in that it supports numerical target and does not compute rule sets. 
+CART constructs binary trees using the feature and threshold that yield the largest information gain at each node."
 
-\subsection{ROC Curves}
+In addition to decision tree classifiers, we compare the performance of the same algorithms on \textbf{Naive Bayes} classifier with varying minority class priors.
+The paper also uses Ripper classifier to compare the performance, but we failed to locate any existing implementation of Ripper classifier in a 3rd party library in Python.
+Instead we use \textbf{k-Nearest Neighbor} classifier with a fixed value of k for comparison with Decision Tree classifier, and varying values of k for comparison amongst k-NN classifiers.
+Our change in classifier is guided by the intuition that the algorithm augments data in the feature space, and since k-NN classification works directly in the feature space, it should provide a better classification accuracy.
+
+\subsection{ROC Curves and Cross-Validation}
+In order to evaluate the performance we plot the Receiver Operating Characteristics (ROC) curves for varying parameters of classification.
+ROC curves are essentially a plot of False Positive Rate (FPR) on x-axis vs True Positive Rate (TPR) on y-axis which measures a classifier's performance in more detail than a simple accuracy measure.
+This granularity is of great use in a class imbalance scenario because it gives an idea about the degree of mis-classification in both positive as well as negative class.  
+Ideally, we will like a low False Positive Rate and a high True Positive Rate, resulting in a shift in ROC curve towards the (0, 100) point. 
+The nearer the curve to the same point, the better the classification.
+
+In our experiments we draw two plots. 
+The first plot contains Decision Tree as the base classifier and we compare the Decision Tree implementation of plain under-sampling of majority class samples at rates varying from \textbf{10\%} to \textbf{2000\%} as described in Section \ref{subsec:smoteu}. 
+For plain under-sampling we do not SMOTE the dataset before under-sampling.
+We compare the ROC curve obtained by plain under-sampling with that obtained by under-sampling with SMOTE.
+To obtain the second ROC curve, we over-sample the dataset with varying degree from \textbf{100\%} to \textbf{500\%}, based on the dataset class distributions.
+In the same plot we compare Decision Tree classifier with Naive Bayes classifier, by adding another ROC curve plotted using classification from Naive Bayes with varying class priors of minority class.
+In the implementation provided by scikit-learn, the class priors are automatically calculated as the frequency of each class samples, as stated in the documentation\cite{nbayes}.
+Thus, we feed in the data used in plain under-sampling to NB classifier as it varies the ratio between the two class samples. 
+The various class priors used to plot the curve vary for different dataset based on the class distribution ratio of the dataset.
+We report the class priors at the end, after performing each experiment.
+In the second plot we replace decision tree classifier with k-NN classifier as the base classifier. 
+We provide a comparison of the classifier with respect to plain under-sampled data and under-sampled data with SMOTE as with previous case.
+
+Each point on the ROC curve is obtained by classifying the data using a \textbf{10-fold cross validation}.
+In an n-fold cross validation, each dataset is divided into n equal parts randomly, and (n-1) of those parts are use for training while 1 left-out part is used for testing.
+This process is iteratively performed n times and classification metric is generated with each prediction.
+The points are the mean False Positive Rate vs mean True Positive Rate for the 10 different classification with a particular configuration of over-sampling/ under-sampling combination.
+Figure \textbf{xx, yy and zz} provides the ROC curves we plot with a comparison on all 3 dataset and the 3 classifiers we use. 
 
 \subsection{Convex Hull and AUC}
+The performance of the ROC curve is quantified using ROC Convex Hull and AUC metric.
+Convex Hull gives the boundary of a potential optimal classifier in comparison of multiple ROC curves.
+ROC Curves themselves may not be optimal at every instance. 
+Thus, we use the hull to find out when a given classifier/method is optimal and when it can be replaced.
+We have implemented convex hull in all our plots, which should be taken as the perfect classification ROC curve.
+We construct the hull by first creating an array of all the 2D points on the ROC Curves using all classifier/method combination.
+Then we call the ConvexHull implementation of Scipy library \cite{scipy} provided in \textit{scipy.spatial} class, which essentially uses the QuickHull algorithm of \cite{qhull}.
+This breaks the decision space into multiple simplices of the convex hull and finally we draw each individual simplex to complete the convex hull of the curves.
+
+Area Under-the-Curve (AUC) is another metric which we use to evaluate the performance of each classification.
+In simple terms, the more the value of AUC, the better the classification as the curve will be nearer to the ideal point (0, 100) to maximize the area.
+We again use the implementation provided in scikit-learn library to calculate the AUC for each ROC curve.
+We summarize the AUC values in Table \textbf{??}.
 
 \section{Discussions}
 
@@ -854,8 +939,9 @@ The conclusion and future scope goes here.
   \section*{Acknowledgment}
 \fi
 
-
-The authors would like to thank...
+The authors would like to thank . . .
+%The authors would like to thank Professor Baoxin Li and the TAs Vijetha and Kevin Ding for providing their valuable guidance. 
+%We appreciate their considerable efforts which helped us in completing the project successfully.
 
 
 % Can use something like this to put references on a page
@@ -896,6 +982,18 @@ Chawla, Nitesh V., et al. "SMOTE: synthetic minority over-sampling technique." J
 \bibitem{sklearn}
 
 \bibitem{mammo}
+
+\bibitem{pima}
+
+\bibitem{satimg}
+
+\bibitem{dtree}
+
+\bibitem{nbayes}
+
+\bibitem{scipy}
+
+\bibitem{qhull}
 
 \end{thebibliography}
 

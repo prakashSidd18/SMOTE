@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 00:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 17:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -186,66 +186,127 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@ALC@unique=\count107
+\c@ALC@line=\count108
+\c@ALC@rem=\count109
+\c@ALC@depth=\count110
+\ALC@tlm=\skip47
+\algorithmicindent=\skip48
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
+\c@AlgoLine=\count111
+\algocf@hangindent=\skip49
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (/usr/local/texlive/2017/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+********************************************************
+Package `algorithm2e' Release 5.1 -- october 19 2015 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (christophe.fiorio@umontpellier.fr)
+********************************************************
+\skiptotal=\skip50
+\skiplinenumber=\skip51
+\skiprule=\skip52
+\skiphlne=\skip53
+\skiptext=\skip54
+\skiplength=\skip55
+\algomargin=\skip56
+\skipalgocfslide=\skip57
+\algowidth=\dimen137
+\inoutsize=\dimen138
+\inoutindent=\dimen139
+\interspacetitleruled=\dimen140
+\interspacealgoruled=\dimen141
+\interspacetitleboxruled=\dimen142
+\algocf@ruledwidth=\skip58
+\algocf@inoutbox=\box30
+\algocf@inputbox=\box31
+\AlCapSkip=\skip59
+\AlCapHSkip=\skip60
+\algoskipindent=\skip61
+\algocf@nlbox=\box32
+\algocf@hangingbox=\box33
+\algocf@untilbox=\box34
+\algocf@skipuntil=\skip62
+\algocf@capbox=\box35
+\algoheightruledefault=\skip63
+\algoheightrule=\skip64
+\algotitleheightruledefault=\skip65
+\algotitleheightrule=\skip66
+\c@algocfline=\count112
+\c@algocfproc=\count113
+\c@algocf=\count114
+\algocf@algoframe=\box36
+\algocf@algobox=\box37
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
  (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen137
-\captionmargin@=\dimen138
-\captionwidth=\dimen139
-\caption@tempdima=\dimen140
-\caption@indent=\dimen141
-\caption@parindent=\dimen142
-\caption@hangindent=\dimen143
+\captionmargin=\dimen143
+\captionmargin@=\dimen144
+\captionwidth=\dimen145
+\caption@tempdima=\dimen146
+\caption@indent=\dimen147
+\caption@parindent=\dimen148
+\caption@hangindent=\dimen149
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
 )
-\c@KVtest=\count107
-\sf@farskip=\skip47
-\sf@captopadj=\dimen144
-\sf@capskip=\skip48
-\sf@nearskip=\skip49
-\c@subfigure=\count108
-\c@subfigure@save=\count109
-\c@lofdepth=\count110
-\c@subtable=\count111
-\c@subtable@save=\count112
-\c@lotdepth=\count113
-\sf@top=\skip50
-\sf@bottom=\skip51
+\c@KVtest=\count115
+\sf@farskip=\skip67
+\sf@captopadj=\dimen150
+\sf@capskip=\skip68
+\sf@nearskip=\skip69
+\c@subfigure=\count116
+\c@subfigure@save=\count117
+\c@lofdepth=\count118
+\c@subtable=\count119
+\c@subtable@save=\count120
+\c@lotdepth=\count121
+\sf@top=\skip70
+\sf@bottom=\skip71
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.aux)
 \openout1 = `bare_jrnl_compsoc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 370.
-LaTeX Font Info:    ... okay on input line 370.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 370.
-LaTeX Font Info:    ... okay on input line 370.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 370.
-LaTeX Font Info:    ... okay on input line 370.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 370.
-LaTeX Font Info:    ... okay on input line 370.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 370.
-LaTeX Font Info:    ... okay on input line 370.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 370.
-LaTeX Font Info:    ... okay on input line 370.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 371.
+LaTeX Font Info:    ... okay on input line 371.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 371.
+LaTeX Font Info:    ... okay on input line 371.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 371.
+LaTeX Font Info:    ... okay on input line 371.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 371.
+LaTeX Font Info:    ... okay on input line 371.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 371.
+LaTeX Font Info:    ... okay on input line 371.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 371.
+LaTeX Font Info:    ... okay on input line 371.
 
 -- Lines per column: 61 (exact).
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count114
-\scratchdimen=\dimen145
-\scratchbox=\box30
-\nofMPsegments=\count115
-\nofMParguments=\count116
+\scratchcounter=\count122
+\scratchdimen=\dimen151
+\scratchbox=\box38
+\nofMPsegments=\count123
+\nofMParguments=\count124
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count117
-\MPscratchDim=\dimen146
-\MPnumerator=\count118
-\makeMPintoPDFobject=\count119
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen152
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks22
 ) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO)
@@ -286,76 +347,84 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 485.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 486.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <11.04124> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 485.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 486.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.03> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 485.
-LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 485.
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 485.
-LaTeX Font Info:    Try loading font information for U+pzd on input line 485.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 486.
+LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 486.
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 486.
+LaTeX Font Info:    Try loading font information for U+pzd on input line 486.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 485.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 486.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/it' in size <8.03> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 485.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 486.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11.04124> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 513.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 514.
 LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <11.04124> not available
-(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 513.
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 514.
 Missing character: There is no Ã in font pplr7t!
 Missing character: There is no ­ in font pplr7t!
  [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 695.
+LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 696.
 
-Underfull \hbox (badness 3792) in paragraph at lines 703--703
+Underfull \hbox (badness 3792) in paragraph at lines 704--704
  \OT1/phv/b/sc/11.04124 3 Eval-u-a-tion Cri-te-ria and Per-for-mance
  []
 
 [2]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.53561> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 746.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 747.
  <code/figures/a.png, id=20, 578.16pt x 433.62pt>
 File: code/figures/a.png Graphic file (type png)
  <use code/figures/a.png>
-Package pdftex.def Info: code/figures/a.png used on input line 779.
+Package pdftex.def Info: code/figures/a.png used on input line 780.
 (pdftex.def)             Requested size: 108.405pt x 81.30354pt.
  <code/figures/b.png, id=22, 578.16pt x 433.62pt>
 File: code/figures/b.png Graphic file (type png)
  <use code/figures/b.png>
-Package pdftex.def Info: code/figures/b.png used on input line 784.
+Package pdftex.def Info: code/figures/b.png used on input line 785.
 (pdftex.def)             Requested size: 108.405pt x 81.30354pt.
  <code/figures/c.png, id=23, 578.16pt x 433.62pt>
 File: code/figures/c.png Graphic file (type png)
  <use code/figures/c.png>
-Package pdftex.def Info: code/figures/c.png used on input line 788.
+Package pdftex.def Info: code/figures/c.png used on input line 789.
 (pdftex.def)             Requested size: 108.405pt x 81.30354pt.
- [3 <./code/figures/a.png> <./code/figures/b.png> <./code/figures/c.png>] [4
 
-] (/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.aux) ) 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3 <./code/figures/a.png> <./code/figures/b.png> <./code/figures/c.png>] [4] [5
+
+] (/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.aux) )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 1061 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 4006 strings out of 492995
- 64585 string characters out of 6132704
- 134339 words of memory out of 5000000
- 7495 multiletter control sequences out of 15000+600000
- 49726 words of font info for 105 fonts, out of 8000000 for 9000
+ 5087 strings out of 492995
+ 81455 string characters out of 6132704
+ 163785 words of memory out of 5000000
+ 8557 multiletter control sequences out of 15000+600000
+ 50828 words of font info for 107 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 39i,9n,49p,1113b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,11n,49p,1113b,2655s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on "/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.pdf" (4 pages, 215895 bytes).
+Output written on "/Users/siddPrakash/Dropbox (ASU)/Fall 2017/FSL/Project/FSL_ProjectFinalReport/.texpadtmp/bare_jrnl_compsoc.pdf" (5 pages, 230754 bytes).
 PDF statistics:
- 69 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 72 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

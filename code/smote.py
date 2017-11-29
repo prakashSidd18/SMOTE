@@ -220,7 +220,7 @@ if __name__=="__main__":
         newsz = int(np.floor(0.1 * sz))
         data = data[np.random.choice(data.shape[0], newsz, replace=False), :]
 
-        np.savetxt("mammo.csv", data, fmt='%10.5f', delimiter=',')
+        # np.savetxt("mammo.csv", data, fmt='%10.5f', delimiter=',')
 
     # print Y
     # Reduce dimensionality of dataset to 2 using PCA for better classification

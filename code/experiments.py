@@ -58,7 +58,7 @@ def cross_validation(X, y, clf, thr):
 
 
 if __name__ == "__main__":
-    dataset = "mammography"
+    dataset = "pimaindians"
     data = smote.dataRead(dataset+".csv")
     print data.shape
 
