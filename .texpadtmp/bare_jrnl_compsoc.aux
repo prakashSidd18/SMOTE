@@ -3,45 +3,91 @@
 \citation{smote}
 \citation{smote}
 \citation{smote}
+\citation{kubat97}
+\citation{kubat98}
+\citation{kubat97}
+\citation{kubat98}
+\citation{japkowicz00}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
 \newlabel{sec:introduction}{{1}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Previous Works}{1}}
+\newlabel{sec:works}{{2}{1}}
+\citation{ll98}
+\citation{solberg96}
+\citation{domingos99}
+\citation{derouin91}
+\citation{mg99}
+\citation{pf98}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Example of an ROC Curve}}{2}}
+\newlabel{fig:roc}{{1}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Evaluation Criteria and Performance Metrics}{2}}
+\newlabel{sec:metrics}{{3}{2}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Confusion Matrix}}{2}}
 \newlabel{tab:confmat}{{1}{2}}
 \citation{mammo}
 \citation{sklearn}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{3}}
+\newlabel{sec:implement}{{4}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Over-sampling with replacement}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SMOTE}{3}}
-\newlabel{fig:a}{{1a}{3}}
+\newlabel{fig:a}{{2a}{3}}
 \newlabel{sub@fig:a}{{(a)}{a}}
-\newlabel{fig:b}{{1b}{3}}
+\newlabel{fig:b}{{2b}{3}}
 \newlabel{sub@fig:b}{{(b)}{b}}
-\newlabel{fig:c}{{1c}{3}}
+\newlabel{fig:c}{{2c}{3}}
 \newlabel{sub@fig:c}{{(c)}{c}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces (a) Decision boundary on raw original data gives a biased classification towards negative (red) class samples.}}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces (a) Decision boundary on raw original data gives a biased classification towards negative (red) class samples.}}{3}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Case I}}}{3}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Case II}}}{3}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Case III}}}{3}}
-\newlabel{fig:compare}{{1}{3}}
+\newlabel{fig:compare}{{2}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}SMOTE}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}SMOTE with under-sampling}{3}}
 \newlabel{subsec:smoteu}{{4.3}{3}}
 \citation{mammo}
 \citation{pima}
 \citation{satimg}
 \citation{dtree}
-\citation{nbayes}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Over-sampling using SMOTE - Algorithm}}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Steps to perform over-sampling using SMOTE to generate synthetic minority data}}{4}}
 \newlabel{algo:smote}{{1}{4}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Experiments}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Datasets}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Classifiers}{4}}
+\newlabel{sec:exp}{{5}{4}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Class Distribution in Datasets Used}}{4}}
 \newlabel{tab:dataset}{{2}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}ROC Curves and Cross-Validation}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Datasets}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Classifiers}{4}}
+\newlabel{fig:mammo1}{{3a}{4}}
+\newlabel{sub@fig:mammo1}{{(a)}{a}}
+\newlabel{fig:mammo2}{{3b}{4}}
+\newlabel{sub@fig:mammo2}{{(b)}{b}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces ROC Curve plots for Mammography dataset.}}{4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Plot I}}}{4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Plot II}}}{4}}
+\newlabel{fig:mammo}{{3}{4}}
+\citation{nbayes}
+\citation{roc}
 \citation{scipy}
 \citation{qhull}
+\citation{pf01}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces AUC of the ROC Curve for plain under-sampling and varying degree of minority over-sampling using SMOTE (100\%, 200\%, 300\%, 400\% \& 500\%)}}{5}}
+\newlabel{tab:auc}{{3}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}ROC Curves and Cross-Validation}{5}}
+\newlabel{fig:pima1}{{4a}{5}}
+\newlabel{sub@fig:pima1}{{(a)}{a}}
+\newlabel{fig:pima2}{{4b}{5}}
+\newlabel{sub@fig:pima2}{{(b)}{b}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces ROC Curve plots for Pima Indians dataset.}}{5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Plot I}}}{5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Plot II}}}{5}}
+\newlabel{fig:pima}{{4}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Convex Hull and AUC}{5}}
+\newlabel{fig:sat1}{{5a}{5}}
+\newlabel{sub@fig:sat1}{{(a)}{a}}
+\newlabel{fig:sat2}{{5b}{5}}
+\newlabel{sub@fig:sat2}{{(b)}{b}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces ROC Curve plots for SatImage dataset.}}{5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Plot I}}}{5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Plot II}}}{5}}
+\newlabel{fig:sat}{{5}{5}}
 \bibcite{smote}{1}
 \bibcite{sklearn}{2}
 \bibcite{mammo}{3}
@@ -49,9 +95,21 @@
 \bibcite{satimg}{5}
 \bibcite{dtree}{6}
 \bibcite{nbayes}{7}
-\bibcite{scipy}{8}
-\bibcite{qhull}{9}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Convex Hull and AUC}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Discussions}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{5}}
-\@writefile{toc}{\contentsline {section}{References}{5}}
+\bibcite{roc}{8}
+\bibcite{scipy}{9}
+\bibcite{qhull}{10}
+\bibcite{pf01}{11}
+\bibcite{kubat97}{12}
+\bibcite{kubat98}{13}
+\bibcite{japkowicz00}{14}
+\bibcite{ll98}{15}
+\bibcite{solberg96}{16}
+\bibcite{domingos99}{17}
+\bibcite{derouin91}{18}
+\bibcite{mg99}{19}
+\bibcite{pf98}{20}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussions}{6}}
+\newlabel{sec:discuss}{{6}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{6}}
+\newlabel{sec:conclude}{{7}{6}}
+\@writefile{toc}{\contentsline {section}{References}{6}}

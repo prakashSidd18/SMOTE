@@ -401,7 +401,7 @@
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
 \author{Siddhant~Prakash,~\IEEEmembership{1211092724}
-        and~Kunal~Bansal,~\IEEEmembership{1211XXXXXX}% <-this % stops a space
+        and~Kunal~Bansal,~\IEEEmembership{1211213169}% <-this % stops a space
 \IEEEcompsocitemizethanks{\IEEEcompsocthanksitem S. Prakash and K. Bansal are with
 School of Computing, Informatics and Design Systems Engineering, Arizona State University, Arizona,
 AZ, 85281.\protect\\
@@ -478,7 +478,7 @@ The abstract goes here.
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
+Imbalanced class datasets, data augmentation, ROC, Convex Hull, AUC
 \end{IEEEkeywords}}
 
 
@@ -538,9 +538,9 @@ Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{T}{he} seminal work, ``SMOTE: synthetic minority over-sampling technique"\cite{smote} deals with the fundamental  problem of imbalanced class data-sets in machine learning, where, data points of one class are in majority over data points of another class. A number of times the data points belonging to the minority class are more important than the majority class. This majority-minority skew in the data-set leads to classification in favor of majority class samples when one uses standard classification techniques like Naive Bayes or Decision Trees. In several cases, the penalty for mis-classifying these minority classes are much higher than mis-classifying the majority class. For example, the problem of classifying the images of mammograms for cancerous cell detection is very sensitive and mis-classification may lead to disastrous outcomes. Still, the number of positive class samples is way outnumbered by the number of negative class samples with the majority (negative) class sample constituting 98\% of total samples.
+\IEEEPARstart{T}{he} seminal work, ``SMOTE: synthetic minority over-sampling technique"\cite{smote} deals with the fundamental  problem of imbalanced class data-sets in machine learning, where, data points of one class are in majority over data points of another class. A number of times the data points belonging to the minority class are more important than the majority class. This majority-minority skew in the data-set leads to classification in favor of majority class samples when one uses standard classification techniques like Naive Bayes or Decision Trees. In several cases, the penalty for mis-classifying these minority classes are much higher than mis-classifying the majority class. For example, the problem of classifying images of mammograms for cancerous cell detection is very sensitive and mis-classification may lead to disastrous outcomes. Still, the number of positive class samples is way outnumbered by the number of negative class samples with the majority (negative) class sample constituting 98\% of total samples.
 
-The authors in \cite{smote} propose a new algorithm to augment the minority samples in a data-set by creating synthetic data points for minority class to even the data distribution between majority and minority classes. They compare the result obtained by this new technique with the results of plain under-sampling the majority samples, as well as over-sampling the minority samples as previously done in other works dealing with the problem.  The results show that their method leads to learning of better classifiers. Further, they show that the classifiers improve with near equal representation from all class in training data. The authors use Receiver Operating Characteristics (ROC) curves as their performance measure. ROC curves provide trade-off between true positive (TP) vs. false positive (FP) which is much more suited to the class imbalance problem than the error rate (accuracy) metric. Area Under the Curve (AUC) and convex hull of ROC curve are used for the experiments as they provide good comparison of the classifiers' performance in class imbalance scenarios. 
+The authors in \cite{smote} propose a new algorithm to augment the minority samples in a data-set by creating synthetic data points for minority class to even the data distribution between majority and minority classes. They compare the result obtained by this new technique with the results of plain under-sampling the majority samples, as well as over-sampling the minority samples as previously done in other works dealing with the problem.  The results show that their method leads to learning of better classifiers. Further, they show that the classifiers improve with near equal representation from all class in training data. The authors use Receiver Operating Characteristics (ROC) curves as their performance measure. ROC curves provide trade-off between true positive (TP) vs. false positive (FP) which is much more suited to the class imbalance problem than the error rate (accuracy) metric. Area Under the Curve (AUC) and convex hull of ROC curve are used for the experiments as they provide good comparison of the classifiers' performance in class imbalance scenarios both quantitative and qualitatively. 
 
 % Many previous work tries to tackle the problem of imbalanced datasets in broadly two ways.\\
 % First, to assign distinct penalty for training data and \\
@@ -550,7 +550,7 @@ The authors in \cite{smote} propose a new algorithm to augment the minority samp
 % They compare there classification for C4.5 Decision Tree, Ripper and Naive Bayes classifiers. \\
 
 %Summarize the tasks
-In our project, we learn to deal with the challenges of class imbalanced data-sets and how to overcome them. We reproduce the work done in \cite{smote} and understand the problem by going over the previous works cited in this paper. Additionally, we summarize the various techniques researchers came up with regards to dealing with this issue. We overview the performance metrics used in this paper and explain why the authors chose to use these metrics, as well as how are they relevant to this particular problem. We then move on to the implementation of the algorithm SMOTE\cite{smote} proposed in the paper, along with two more approaches which was used to emphasize the novelty of this technique. We replicate the experiments section on 3 of the 9 datasets listed in the paper, using Decision Trees, Nearest Neighbours and Naíve Bayes classifiers to learn classification models. We also use the prediction results from these models to plot ROC curves, and taking AUC and convex hull of the curve as evaluation metric, compare our graphs with the graphs obtained in the paper. 
+In our project, we learn to deal with the challenges of class imbalanced data-sets and how to overcome them. We reproduce the work done in \cite{smote} and understand the problem by going over the previous works cited in this paper. Additionally, we summarize the various techniques researchers came up with regards to dealing with this issue in Section \ref{sec:works}. We overview the performance metrics used in this paper and explain why the authors chose to use these metrics, as well as how are they relevant to this particular problem in Section \ref{sec:metrics}. We then move on to the implementation of the algorithm SMOTE\cite{smote} proposed in the paper, along with two more approaches which was used to emphasize the novelty of this technique in Section \ref{sec:implement}. We replicate the experiments section on 3 of the 9 datasets listed in the paper, using Decision Trees, Nearest Neighbours and Naive Bayes classifiers to learn classification models in Section \ref{sec:exp}. We also use the prediction results from these models to plot ROC curves, and taking AUC and convex hull of the curve as evaluation metric, compare our plots with the plots obtained in the paper and provide a detailed discussion on the results in Section \ref{sec:discuss}. Finally, we conclude our work with an overview of future works in Section \ref{sec:conclude}. 
 
 %\subsection{Subsection Heading Here}
 %Subsection text here.
@@ -658,15 +658,15 @@ In our project, we learn to deal with the challenges of class imbalanced data-se
 % \fnbelowfloat command of the stfloats package.
 
 \section{Previous Works}
-
+\label{sec:works}
 Most of the cases of imbalanced dataset is dealt in two ways, viz. under-sampling the majority class samples or over-sampling the minority class samples.
 Different domain requires different techniques for the same based on their requirement. 
-When it comes to under-sampling the majority class, Kubat et al (1997, 1998) experimented with the same.
-In Kubat and Matwin (1997), the majority class is selectively under sampled while the minority class sampling remains fixed. 
+When it comes to under-sampling the majority class, Kubat et al \cite{kubat97}\cite{kubat98} experimented with the same.
+In Kubat and Matwin \cite{kubat97}, the majority class is selectively under sampled while the minority class sampling remains fixed. 
 The performance metric used for the classifier is geometric mean which is not as expressive as a ROC curve and corresponds to just one point on it.
-Related to the above, the SHRINK system of Kubat et al (1998) classified the overlapping reasons of both majority and minority classes as positive, leading to a "best positive region" classification.
+Related to the above, the SHRINK system of Kubat et al \cite{kubat98} classified the overlapping reasons of both majority and minority classes as positive, leading to a "best positive region" classification.
  
-Another study on under-sampling of dataset was performed by Japkowicz (2000). 
+Another study on under-sampling of dataset was performed by Japkowicz et al \cite{japkowicz00}. 
 In her study, she explored different sampling techniques on artificial 1D data for better evaluation of concept complexity.
 Her exploration involved under-sampling as well as resampling of data.
 Both strategies involved two different methods, viz. random and focused. 
@@ -675,19 +675,19 @@ In random under-sampling, the samples from majority class were removed randomly 
 Her study revealed the efficacy of both the sampling techniques but did not provide any clear advantage in the domain considered.
 
 While under sampling approach works, other works uses under-sampling of majority class samples along with over-sampling of minority class samples for learning a better classifier.
-Ling and Li et al (1998) uses lift analysis to measure classifier's performance in the domain of marketing analysis problem.
+Ling and Li et al \cite{ll98} uses lift analysis to measure classifier's performance in the domain of marketing analysis problem.
 They ranked the test examples by confidence measures and used lift as the evaluation criteria.
 In one of the experiments they performed, they under sampled the majority class and observed that the best lift index is obtained when there is equal representation of the classes.
 In another experiment, they over-sampled the minority samples with replacement to match the negative samples but could not prove the same as significant. 
 The work present in this paper is similar in strategy, but the over-sampling techniques is different.
-Another work which uses the idea of under-sampling as well as over-sampling of data to overcome class imbalance problem is Solberg and Solberg et al (1996).
+Another work which uses the idea of under-sampling as well as over-sampling of data to overcome class imbalance problem is Solberg and Solberg et al \cite{solberg96} .
 They use SAR imagery dataset obtained for classification of oil slicks which is heavily biased towards look-alike data compared to oil slicks (98\%-2\%). 
 They created a new dataset by over-sampling the oil slicks data randomly and under-sampling the look-alike data to create equal class distribution.
 As a result, on learning a classification tree on the balanced dataset they obtained better error rates on both classes compared to training on imbalanced dataset.
-Domingos et al (1999) also take the same approach to deal with class imbalance by introducing a "metacost" term to under-sampling as well as over-sampling.
+Domingos et al \cite{domingos99} also take the same approach to deal with class imbalance by introducing a "metacost" term to under-sampling as well as over-sampling.
 The work shows the metacost improves over either, and proves that under-sampling of majority class does better than over-sampling of minority class.
 
-Other researchers (DeRouin et al 1991) tried to use the same on feed-forward neural networks which is not able to learn to discriminate between classes sufficiently due to the same class imbalance problem.
+Other researchers (DeRouin et al \cite{derouin91}) tried to use the same on feed-forward neural networks which is not able to learn to discriminate between classes sufficiently due to the same class imbalance problem.
 The learning rate of the neural network was adapted according to the class distribution in the data set.
 Experimenting over artificial as well as real-world training data with multi-class problem provided better classification accuracy for minority class.
 In information retrieval domain, document classification is one of the challenging problems which is affected by this class imbalance.
@@ -695,16 +695,24 @@ Creating  a simple bag-of-words model results in interesting words samples as a 
 Thus, in IR domain, the performance metric is replaced from error rates and instead, precision and recall terms are used for performance measurements.
 $$recall = \frac{TP}{TP + FN}$$ $$precision = \frac{TP}{TP + FP}$$
 We will see what we mean by the terms True Positive (TP), False Positive (FP) and False Negative (FN) in the next section.
-In the same domain, Mladenic and Grobelnik (1999) proposed a feature subset selection approach to deal with class imbalance.
+In the same domain, Mladenic and Grobelnik \cite{mg99} proposed a feature subset selection approach to deal with class imbalance.
 They found out that using odd ratio along with Naive Bayes classifier performs best in the domain. 
 Odds ratio incorporates target class information giving better result over information gain which is computed per word for each class.
-In 1997, Provost and Fawcett introduced the ROC convex hull method for performance evaluation of the classifier in which ROC space is used to separate classification performance from class and cost distribution. 
+In \cite{pf98}, Provost and Fawcett introduced the ROC convex hull method for performance evaluation of the classifier in which ROC space is used to separate classification performance from class and cost distribution. 
 
 
 \section{Evaluation Criteria and Performance Metrics}
+\label{sec:metrics}
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=2.5in]{code/figures/mammography_ROC}
+	\caption{Example of an ROC Curve}
+	\label{fig:roc}
+\end{figure}
+
 Confusion matrix, as shown in Table \ref{tab:confmat}, is one of the most common method in machine learning used to evaluate performance of a (2-class) classification problem.
 
-\begin{table}[h!]
+\begin{table}[!b]
     \centering
     \begin{tabular}{|c||c|c|}
     	\hline
@@ -720,13 +728,14 @@ As shown in the table, the columns are predicted class and the rows are actual c
 Over a dataset of finite samples, the count of correctly classified negative samples is termed as True Negative (TN), while the count of incorrectly classified negative samples is termed as False Positive (FP).
 Similarly, the count of incorrectly classified positive sample is termed as False Negative (FN), while the count of correctly classified positive sample is termed as True Positive (TP).
 
+
 For any classification task, predictive accuracy is defined as the total number of correctly classified samples over total number of samples. 
 Mathematically, it is given by, $$ Accuracy = \frac{TP + TN}{TN + FP + FN + TP}$$
 In machine learning, we evaluate the performance of a classifier by its error rate which is given by, $$Error Rate = 1 - Accuracy$$
 This performance measure works well for balanced class data sets, but for imbalanced datasets a much wider used metric is the Receiver Operating Characteristics (ROC) curves. 
 
 A typically ROC curve is a plot of percentage True Positive vs percentage False Positive. 
-One such curve is shown in Figure \textbf{XX}.
+One such curve is shown in Figure \ref{fig:roc}.
 We have \%ge FP on the X-axis given by, $$\%ge~FP = \frac{FP}{TN + FP}$$
 and \%ge TP on the Y-axis given by, $$\%ge~TP = \frac{TP}{TP + FN}$$
 As evident from the definition, the ideal point on the curve will be (0,100), signifying the all positive examples are classified correctly while no negative samples are classified wrongly as positive.
@@ -734,8 +743,9 @@ The Area Under the Curve (AUC) can be taken as a good metric for comparing diffe
 Thus, the convex hull of ROC curve, being potentially optimal, is also taken as one of the performance metrics.
 
 
-\section{Implementation}
 
+\section{Implementation}
+\label{sec:implement}
 In this section we provide the details of the various approaches we implemented from the paper.
 Using the ``mammography" dataset\cite{mammo}, we show the effectiveness of SMOTE in this class imbalanced scenario.
 The dataset consist of 11,183 samples of which 10,923 are negative samples while we have only 260 positive samples.
@@ -802,33 +812,33 @@ SMOTing the dataset by 500\% results in an increase in minority samples to 90.
 Now, under-sampling the dataset by a degree of 200\% means drawing out \textit{half the samples of minority class samples, at random, from the total majority class samples}, i.e using 45 samples from the 1,100 majority (negative) class samples along with the 90 minority (positive) class samples to draw the decision region.
 
 \begin{algorithm}[!h]
- \KwData{this text}
- \KwResult{how to write algorithm with \LaTeX2e }
- initialization\;
- \While{not at end of this document}{
-  read current\;
-  \eIf{understand}{
-   go to next section\;
-   current section becomes this one\;
-   }{
-   go back to the beginning of current section\;
+ \KwData{\#Minority Samples T; Degree of SMOTE N\%; \#nearest neighbor k}
+ \KwResult{synthetic[][] := (N/100)*T synthetic minority samples }
+ initialization:= original[][]; nIdx=0;  nAttr\;
+ \If{N $<$ 100}{
+   T = (N/100) * T\;
+   N = 100\;
+   }
+   N = (int) (N/100)\;
+ \For{i := 1 to T}{
+  nnArray := compute k nearest neighbor\;
+  \While{N != 0}{
+  nn := random(1, k)\;
+  \For{attr := 1 to nAttr}{
+  dif = original[nnArray[nn]][attr] - sample[i][attr]\;
+  gap = random(0, 1)\;
+  synthetic[nIdx][attr] = sample[i][attr] + gap*dif\;
+  }
+  nIdx++\;
+  N-=1\;
   }
  }
- \caption{Over-sampling using SMOTE - Algorithm}
+ \caption{Steps to perform over-sampling using SMOTE to generate synthetic minority data}
  \label{algo:smote}
 \end{algorithm}
 
-\section{Experiments}
-We experiment with our implementation of plain under-sampling and under-sampling with SMOTE under varying degrees of under-sampling and SMOTE combinations.   
-Our aim is to tackle the class imbalance problems in datasets, thus, we test the algorithm on 3 different dataset with different class distributions.
-We use Decision Trees, Naive Bayes and k-NN classifiers with varying under-sampling and SMOTE degrees to (i) analyze the effectiveness of SMOTing data, and (ii) compare the classifiers learning the best decision boundaries.
-We plot the ROC curves and use ROC Convex Hull (ROCCH) and Area Under the Curve (AUC) as our metrics to draw our conclusions.
-\subsection{Datasets}
-The 3 dataset we use are Mammography Dataset \cite{mammo}, Pima Indian dataset \cite{pima} and SatImage dataset \cite{satimg}.
-The class distribution of the datasets are provided in Table \ref{tab:dataset}.
-We have provided the codes to convert raw data file into comma separated file format (CSV), which is the input dataset file format in our implementation and experiments code, in the supplementary material. 
 
-\begin{table}[!b]
+\begin{table}[!t]
     \centering
     \begin{tabular}{|c||c|c|}
     	\hline
@@ -840,8 +850,49 @@ We have provided the codes to convert raw data file into comma separated file fo
     \caption{Class Distribution in Datasets Used}
     \label{tab:dataset}
 \end{table}
+
+\begin{table*}[t]
+    \centering
+    \begin{tabular}{|c||c|c|c|c|c|c|}
+    	\hline
+         Datasets & Under & SMOTE 100 & SMOTE 200 & SMOTE 300 & SMOTE 400 & SMOTE 500  \\ \hline \hline  
+        Mammography &  0.7220 & 0.7290 & 0.7776 & \textbf{0.7919} & 0.7918 & 0.7752 \\ \hline
+        SatImage & 0.7866 & 0.7881 & 0.8259 & 0.8318 & \textbf{0.8380} & 0.8283 \\ \hline 
+        Pima Indian & 0.6581 & 0.6567 & 0.7014 &  0.7145 & 0.7207 & \textbf{0.7327} \\ \hline
+    \end{tabular}
+    \caption{AUC of the ROC Curve for plain under-sampling and varying degree of minority over-sampling using SMOTE (100\%, 200\%, 300\%, 400\% \& 500\%)}
+    \label{tab:auc}
+\end{table*}
+
+
+\section{Experiments}
+\label{sec:exp}
+We experiment with our implementation of plain under-sampling and under-sampling with SMOTE under varying degrees of under-sampling and SMOTE combinations.   
+Our aim is to tackle the class imbalance problems in datasets, thus, we test the algorithm on 3 different dataset with different class distributions.
+We use Decision Trees, Naive Bayes and k-NN classifiers with varying under-sampling and SMOTE degrees to (i) analyze the effectiveness of SMOTing data, and (ii) compare the classifiers learning the best decision boundaries.
+We plot the ROC curves and use ROC Convex Hull (ROCCH) and Area Under the Curve (AUC) as our metrics to draw our conclusions.
+\subsection{Datasets}
+The 3 dataset we use are Mammography Dataset \cite{mammo}, Pima Indian dataset \cite{pima} and SatImage dataset \cite{satimg}.
+The class distribution of the datasets are provided in Table \ref{tab:dataset}.
+We have provided the codes to convert raw data file into comma separated file format (CSV), which is the input dataset file format in our implementation and experiments code, in the supplementary material. 
+
 Each datasets are multi-dimensional, with mammography dataset consisting 6 attributes, Pima Indian having 8 attributes and SatImage datasets having 36 dimensions.
 Wherever needed, we reduce the dimensionality of dataset using PCA for preserving maximum information, faster computation and visualization of decision boundary in 2-D feature space.
+\begin{figure}[!b]
+\centering
+\subfloat[Plot I]{
+	\includegraphics[width=1.5in]{code/figures/mammography_ROC1}%
+	\label{fig:mammo1}
+	}
+\hfil
+\subfloat[Plot II]{
+	\includegraphics[width=1.5in]{code/figures/mammography_ROC2}%
+	\label{fig:mammo2}
+	}
+\hfil
+\caption{ROC Curve plots for Mammography dataset.}
+\label{fig:mammo}
+\end{figure}
 
 \subsection{Classifiers}
 Our main classifier for testing the algorithm implementation is \textbf{Decision Trees}.
@@ -854,6 +905,7 @@ In addition to decision tree classifiers, we compare the performance of the same
 The paper also uses Ripper classifier to compare the performance, but we failed to locate any existing implementation of Ripper classifier in a 3rd party library in Python.
 Instead we use \textbf{k-Nearest Neighbor} classifier with a fixed value of k for comparison with Decision Tree classifier, and varying values of k for comparison amongst k-NN classifiers.
 Our change in classifier is guided by the intuition that the algorithm augments data in the feature space, and since k-NN classification works directly in the feature space, it should provide a better classification accuracy.
+The value of k is 5 for all our experiments.
 
 \subsection{ROC Curves and Cross-Validation}
 In order to evaluate the performance we plot the Receiver Operating Characteristics (ROC) curves for varying parameters of classification.
@@ -861,6 +913,21 @@ ROC curves are essentially a plot of False Positive Rate (FPR) on x-axis vs True
 This granularity is of great use in a class imbalance scenario because it gives an idea about the degree of mis-classification in both positive as well as negative class.  
 Ideally, we will like a low False Positive Rate and a high True Positive Rate, resulting in a shift in ROC curve towards the (0, 100) point. 
 The nearer the curve to the same point, the better the classification.
+\begin{figure}[!b]
+\centering
+\subfloat[Plot I]{
+	\includegraphics[width=1.5in]{code/figures/pimaindians_ROC1}%
+	\label{fig:pima1}
+	}
+\hfil
+\subfloat[Plot II]{
+	\includegraphics[width=1.5in]{code/figures/pimaindians_ROC2}%
+	\label{fig:pima2}
+	}
+\hfil
+\caption{ROC Curve plots for Pima Indians dataset.}
+\label{fig:pima}
+\end{figure}
 
 In our experiments we draw two plots. 
 The first plot contains Decision Tree as the base classifier and we compare the Decision Tree implementation of plain under-sampling of majority class samples at rates varying from \textbf{10\%} to \textbf{2000\%} as described in Section \ref{subsec:smoteu}. 
@@ -875,30 +942,53 @@ We report the class priors at the end, after performing each experiment.
 In the second plot we replace decision tree classifier with k-NN classifier as the base classifier. 
 We provide a comparison of the classifier with respect to plain under-sampled data and under-sampled data with SMOTE as with previous case.
 
-Each point on the ROC curve is obtained by classifying the data using a \textbf{10-fold cross validation}.
+Each point on the ROC curve is obtained by classifying the data using a \textbf{10-fold cross validation} .
 In an n-fold cross validation, each dataset is divided into n equal parts randomly, and (n-1) of those parts are use for training while 1 left-out part is used for testing.
 This process is iteratively performed n times and classification metric is generated with each prediction.
 The points are the mean False Positive Rate vs mean True Positive Rate for the 10 different classification with a particular configuration of over-sampling/ under-sampling combination.
-Figure \textbf{xx, yy and zz} provides the ROC curves we plot with a comparison on all 3 dataset and the 3 classifiers we use. 
+We followed the ROC curve implementation with cross-validation of scikit-learn library\cite{roc}, with modification to plot curves as we needed for our particular experiments.
+Figure \ref{fig:mammo}, \ref{fig:pima} and \ref{fig:sat} provides the ROC curves we plot with comparison on all 3 datasets and the 3 classifiers we use. 
+
+\begin{figure}[!b]
+\centering
+\subfloat[Plot I]{
+	\includegraphics[width=1.5in]{code/figures/sat_ROC1}%
+	\label{fig:sat1}
+	}
+\hfil
+\subfloat[Plot II]{
+	\includegraphics[width=1.5in]{code/figures/sat_ROC2}%
+	\label{fig:sat2}
+	}
+\hfil
+\caption{ROC Curve plots for SatImage dataset.}
+\label{fig:sat}
+\end{figure}
+
+
 
 \subsection{Convex Hull and AUC}
+
 The performance of the ROC curve is quantified using ROC Convex Hull and AUC metric.
 Convex Hull gives the boundary of a potential optimal classifier in comparison of multiple ROC curves.
 ROC Curves themselves may not be optimal at every instance. 
 Thus, we use the hull to find out when a given classifier/method is optimal and when it can be replaced.
 We have implemented convex hull in all our plots, which should be taken as the perfect classification ROC curve.
 We construct the hull by first creating an array of all the 2D points on the ROC Curves using all classifier/method combination.
-Then we call the ConvexHull implementation of Scipy library \cite{scipy} provided in \textit{scipy.spatial} class, which essentially uses the QuickHull algorithm of \cite{qhull}.
+Then we call the ConvexHull implementation of Scipy library \cite{scipy} provided in \textit{scipy.spatial} class, which essentially uses the QuickHull algorithm of \cite{qhull}\cite{pf01}.
 This breaks the decision space into multiple simplices of the convex hull and finally we draw each individual simplex to complete the convex hull of the curves.
 
 Area Under-the-Curve (AUC) is another metric which we use to evaluate the performance of each classification.
 In simple terms, the more the value of AUC, the better the classification as the curve will be nearer to the ideal point (0, 100) to maximize the area.
 We again use the implementation provided in scikit-learn library to calculate the AUC for each ROC curve.
-We summarize the AUC values in Table \textbf{??}.
+We summarize the AUC values in Table \ref{tab:auc}.
+
 
 \section{Discussions}
+\label{sec:discuss}
 
 \section{Conclusion}
+\label{sec:conclude}
 The conclusion and future scope goes here.
 
 
@@ -939,9 +1029,9 @@ The conclusion and future scope goes here.
   \section*{Acknowledgment}
 \fi
 
-The authors would like to thank . . .
-%The authors would like to thank Professor Baoxin Li and the TAs Vijetha and Kevin Ding for providing their valuable guidance. 
-%We appreciate their considerable efforts which helped us in completing the project successfully.
+%The authors would like to thank . . .
+The authors would like to thank Professor Baoxin Li and the TAs Vijetha Gattupalli and Kevin Ding for providing their valuable guidance. 
+We appreciate their considerate efforts which helped us in completing the project successfully.
 
 
 % Can use something like this to put references on a page
@@ -980,20 +1070,69 @@ The authors would like to thank . . .
 Chawla, Nitesh V., et al. "SMOTE: synthetic minority over-sampling technique." Journal of artificial intelligence research 16 (2002): 321-357.
 
 \bibitem{sklearn}
+Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.
 
 \bibitem{mammo}
+Woods, K., Doss, C., Bowyer, K., Solka, J., Priebe, C., \& Kegelmeyer, P. (1993). Compara- tive Evaluation of Pattern Recognition Techniques for Detection of Microcalcifications in Mammography. International Journal of Pattern Recognition and Artificial Intel- ligence, 7(6), 1417–1436.
+\url{http://odds.cs.stonybrook.edu/mammography-dataset/}
 
 \bibitem{pima}
+Blake, C., \& Merz, C. (1998). UCI Repository of Machine Learning Databases . Department of Information and Computer Sciences, University of California, Irvine.
+\url{https://archive.ics.uci.edu/ml/datasets/pima+indians+diabetes}
 
 \bibitem{satimg}
+Blake, C., \& Merz, C. (1998). UCI Repository of Machine Learning Databases . Department of Information and Computer Sciences, University of California, Irvine.
+\url{https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/satimage/}
 
 \bibitem{dtree}
-
+Decion Trees, Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.
+\url{http://scikit-learn.org/stable/modules/tree.html}
 \bibitem{nbayes}
+Naive Bayes, Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.
+\url{http://scikit-learn.org/stable/modules/naive_bayes.html}
+
+
+\bibitem{roc}
+ROC Curves, Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.
+\url{http://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py}
 
 \bibitem{scipy}
-
+Scientific Computing Tools for Python. SciPy contributors.
+\url{https://www.scipy.org/index.html}
+ 
 \bibitem{qhull}
+Barber, C. B., Dobkin, D. P., \& Huhdanpaa, H. (1996). The quickhull algorithm for convex hulls. ACM Transactions on Mathematical Software, 22 (4), 469–483. 
+\url{http://www. acm.org/pubs/citations/journals/toms/1996-22-4/p469-barber/}.
+
+\bibitem{pf01}
+Provost, F., \& Fawcett, T. (2001). Robust Classification for Imprecise Environments. Ma- chine Learning, 42/3, 203–231.
+
+\bibitem{kubat97}
+Kubat, M., \& Matwin, S. (1997). Addressing the Curse of Imbalanced Training Sets: One Sided Selection. In Proceedings of the Fourteenth International Conference on Machine Learning, pp. 179–186 Nashville, Tennesse. Morgan Kaufmann.
+
+\bibitem{kubat98}
+Kubat, M., Holte, R., \& Matwin, S. (1998). Machine Learning for the Detection of Oil Spills in Satellite Radar Images. Machine Learning, 30, 195–215.
+
+\bibitem{japkowicz00}
+Japkowicz, N. (2000). The Class Imbalance Problem: Significance and Strategies. In Proceedings of the 2000 International Conference on Artificial Intelligence (IC-AI’2000): Special Track on Inductive Learning Las Vegas, Nevada.
+
+\bibitem{ll98}
+Ling, C., \& Li, C. (1998). Data Mining for Direct Marketing Problems and Solutions. InProceedings of the Fourth International Conference on Knowledge Discovery and Data Mining (KDD-98) New York, NY. AAAI Press.
+
+\bibitem{solberg96}
+Solberg, A., \& Solberg, R. (1996). A Large-Scale Evaluation of Features for Automatic Detection of Oil Spills in ERS SAR Images. In International Geoscience and Remote Sensing Symposium, pp. 1484–1486 Lincoln, NE.
+
+\bibitem{domingos99}
+Domingos, P. (1999). Metacost: A General Method for Making Classifiers Cost-sensitive. In Proceedings of the Fifth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, pp. 155–164 San Diego, CA. ACM Press.
+
+\bibitem{derouin91}
+DeRouin, E., Brown, J., Fausett, L., \& Schneider, M. (1991). Neural Network Training on Unequally Represented Classes. In Intellligent Engineering Systems Through Artificial Neural Networks, pp. 135–141 New York. ASME Press.
+
+\bibitem{mg99}
+Mladeni ́c, D., \& Grobelnik, M. (1999). Feature Selection for Unbalanced Class Distribution and Naive Bayes. In Proceedings of the 16th International Conference on Machine Learning., pp. 258–267. Morgan Kaufmann.
+
+\bibitem{pf98}
+Provost, F., Fawcett, T., \& Kohavi, R. (1998). The Case Against Accuracy Estimation for Comparing Induction Algorithms. In Proceedings of the Fifteenth International Conference on Machine Learning, pp. 445–453 Madison, WI. Morgan Kauffmann.
 
 \end{thebibliography}
 
