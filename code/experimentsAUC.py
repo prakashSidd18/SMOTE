@@ -3,16 +3,11 @@
 import numpy as np
 import smote
 from scipy import interp
-import matplotlib.pyplot as plt
-from sklearn.model_selection import cross_val_score
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import roc_curve, auc
 from sklearn.model_selection import StratifiedKFold
-from sklearn.naive_bayes import GaussianNB
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.decomposition import PCA
-from scipy.spatial import ConvexHull
 from sklearn.metrics import roc_curve, auc
+import time
 
 def cross_validation(X, y, clf, thr):
     # 10-fold cross-validation
@@ -43,20 +38,16 @@ def cross_validation(X, y, clf, thr):
 
 if __name__ == "__main__":
     datasetNames = ['mammography', 'sat', 'pimaindians']
-    dataset = datasetNames[0]
+    dataset = datasetNames[2]
     data = smote.dataRead(dataset+".csv")
 
     minority_overSample_percent = [100, 200, 300, 400, 500]
     majority_underSample_percent = [10, 100, 150, 200, 500, 1000]
-    # majority_underSample_percent = [10, 15, 25, 50, 75, 100, 125, 150, 175, 200, 300, 400, 500, 600, 700, 800, 1000,
-    #                                 2000]
 
     visSample = 3
     NBthresh = 0.5
     thresh = 1.0
     KNN = 5
-    # minority_overSample_percent = [400]
-    # majority_underSample_percent = [100, 300]
 
     pca_true = False
     if pca_true:
@@ -65,12 +56,12 @@ if __name__ == "__main__":
 
         pca = PCA(n_components=2)
         xData = pca.fit_transform(xData)
-        # print xData.shape
 
         data = np.empty((data.shape[0], 3), dtype=xData.dtype)
         data[: , :2] = xData
         data[:, [2]] = yData
 
+    t0 = time.time()
     X = data[:, [1, 0]]
     y = data[:, [data.shape[1] - 1]]
 
@@ -87,7 +78,6 @@ if __name__ == "__main__":
     freq = dict(zip(unique, counts))
     nPositive = freq[1.0]
     nNegative = freq[0.0]
-    # print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
 
     for i in range(len(majority_underSample_percent)):
         # print '#######################################################################'
@@ -98,7 +88,6 @@ if __name__ == "__main__":
         nPositive = freq[1.0]
         nNegative = freq[0.0]
         print 'UnderSampled by ' + str(majority_underSample_percent[i]) + ' %'
-        # print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
 
         # Decision Tree classifier on Under-sampled majority data
         X = dataB[:, [1, 0]]
@@ -109,7 +98,6 @@ if __name__ == "__main__":
         exp[i,0] = aucv
         print 'SMOTED by ',
         for j in range(len(minority_overSample_percent)):
-            # print '------------------------------------------------------------'
             #Over-sampled minority data on undersampled Majority Data
             dataC = smote.smote(dataB, minority_overSample_percent[j], 5)
 
@@ -121,16 +109,18 @@ if __name__ == "__main__":
             nPositive = freq[1.0]
             nNegative = freq[0.0]
             print str(minority_overSample_percent[j])+' %, ',
-            # print '+ve Class: ', nPositive, ' -ve Class: ', nNegative
-
 
             # Decision Tree classifier on SMOTE+Under-sampled data
             clf = DecisionTreeClassifier()
             aucv, fpr, tpr  = cross_validation(X,y[:,0], clf, thresh)
             exp[i, j+1] = aucv
 
+    t1 = time.time()
+    timeTaken = t1-t0
+
     print dataset
-    print np.mean(exp,axis=0);
+    print 'Time elapsed: ', timeTaken
+    print np.mean(exp,axis=0)
     print "####################################################################"
     print exp
 

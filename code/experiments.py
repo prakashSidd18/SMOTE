@@ -2,9 +2,7 @@
 
 import numpy as np
 import smote
-from scipy import interp
 import matplotlib.pyplot as plt
-from sklearn.model_selection import cross_val_score
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import roc_curve, auc
 from sklearn.model_selection import StratifiedKFold
@@ -12,6 +10,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.decomposition import PCA
 from scipy.spatial import ConvexHull
+import time
 
 
 def cross_validation(X, y, clf, thr):
@@ -25,6 +24,7 @@ def cross_validation(X, y, clf, thr):
     i = 0
     for train, test in cv.split(X, y):
         probas_ = clf.fit(X[train], y[train]).predict_proba(X[test])
+
         # Compute ROC curve and area the curve
         fpr, tpr, thresholds = roc_curve(y[test], probas_[:, 1])
 
@@ -43,37 +43,30 @@ def cross_validation(X, y, clf, thr):
     fprs = np.array(fprs)
     mean_tpr = np.mean(tprs)
     mean_fpr = np.mean(fprs)
-    # print mean_fpr, mean_tpr
-
-    # plt.plot(mean_fpr, mean_tpr, 'bo',label=r'Mean ROC ',lw=2, alpha=.8)
-    # plt.xlim([-0.05, 1.05])
-    # plt.ylim([-0.05, 1.05])
-    # plt.xlabel('False Positive Rate')
-    # plt.ylabel('True Positive Rate')
-    # plt.title('Receiver operating characteristic example')
-    # plt.legend(loc="lower right")
-    # plt.show()
 
     return mean_fpr, mean_tpr
 
 
 if __name__ == "__main__":
     datasetNames = ['mammography', 'sat', 'pimaindians']
-    dataset = datasetNames[2]
+
+    # Chose the dataset 0: Mammography 1: SatImage 2: Pima Indians
+    dataset = datasetNames[0]
     data = smote.dataRead(dataset+".csv")
     print data.shape
 
     minority_overSample_percent = [100, 200, 300, 400, 500]
-    # majority_underSample_percent = [10, 50, 100, 125, 150, 175, 200, 500, 1000]
     majority_underSample_percent = [10, 15, 25, 50, 75, 100, 125, 150, 175, 200, 300, 400, 500, 600, 700, 800, 1000,
                                     2000]
 
+    # Specify the index of SMOTE degree
     visSample = 1
+
     NBthresh = 0.5
     thresh = 1.0
+
+    # Specify the nearest neighbor
     KNN = 5
-    # minority_overSample_percent = [400]
-    # majority_underSample_percent = [100, 300]
 
     pca_true = False
     if pca_true:
@@ -82,12 +75,12 @@ if __name__ == "__main__":
 
         pca = PCA(n_components=2)
         xData = pca.fit_transform(xData)
-        # print xData.shape
 
         data = np.empty((data.shape[0], 3), dtype=xData.dtype)
         data[: , :2] = xData
         data[:, [2]] = yData
 
+    t0 = time.time()
     X = data[:, [1, 0]]
     y = data[:, [data.shape[1] - 1]]
 
@@ -201,6 +194,9 @@ if __name__ == "__main__":
         expF[:, -1, :] = 1.0
         visSample = j
 
+        t1 = time.time()
+        totalTime = t1 - t0
+
         cHullArr1 = np.concatenate((expA[visSample, :, :], expB[visSample, :, :], expC[visSample, :, :]))
         hull1 = ConvexHull(cHullArr1)
 
@@ -241,15 +237,4 @@ if __name__ == "__main__":
         print '-----------------------------------'
         print 'Priors: ', priors
 
-        # scores = cross_val_score(clfUSmote, X, Y[:,0], cv=10)
-        # # print scores.shape
-        # # print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
-        # print("Under-sample rate: %d  Accuracy: %0.2f (+/- %0.2f)" % (i, scores.mean(), scores.std() * 2))
-
-        # fpr, tpr, thresholds = metrics.roc_curve(Y[:,0], scores, pos_label=2)
-
-
-
-
-
-
+        print 'Time: ', totalTime
